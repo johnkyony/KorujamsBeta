@@ -5,12 +5,12 @@ html
     title
       = content_for?(:title) ? yield(:title) : 'Korujams'
     meta name="description" content="#{content_for?(:description) ? yield(:description) : 'Korujams'}"
-    == stylesheet_link_tag "application", :media => 'all', 'data-turbolinks-track' => 'reload'
-    == javascript_include_tag 'application', 'data-turbolinks-track' => 'reload'
+    == stylesheet_link_tag "application", :media => 'all'
+    == javascript_include_tag 'application'
     == csrf_meta_tags
   body
-    header
-      == render 'layouts/navigation'
-    main[role="main"]
-      == render 'layouts/messages'
-      == yield
+    == render 'layouts/link_to_css'
+    == render 'layouts/paper_kit_nav'
+    == render 'layouts/messages'
+    == yield
+    == render 'layouts/paper_kit_footer'

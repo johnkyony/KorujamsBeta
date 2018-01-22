@@ -1,0 +1,14 @@
+# Read about fixtures at
+# http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  repo_id: MyString
+  repo_name: MyString
+  repo_description: MyString
+  user: 
+
+two:
+  repo_id: MyString
+  repo_name: MyString
+  repo_description: MyString
+  user: 

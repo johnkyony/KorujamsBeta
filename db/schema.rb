@@ -11,7 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180117161850) do
+ActiveRecord::Schema.define(version: 20180122165221) do
+
+  create_table "project_milestones", force: :cascade do |t|
+    t.integer  "project_id"
+    t.string   "title"
+    t.string   "description"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "milestone_id"
+    t.string   "avatar_url"
+  end
+
+  add_index "project_milestones", ["project_id"], name: "index_project_milestones_on_project_id"
+
+  create_table "projects", force: :cascade do |t|
+    t.string   "repo_id"
+    t.string   "repo_name"
+    t.string   "repo_description"
+    t.integer  "user_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "projects", ["user_id"], name: "index_projects_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
