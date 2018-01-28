@@ -1,10 +1,11 @@
 
-
-       <div class="content">
+    <div class="container-fluid">
+        <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                	 <% @projects.each do |project| %>
-                	       <div class="col-lg-4 col-md-5">
+                    <div class="col-lg-12">
+                       <% @projects.each do |project| %>
+                	       <div class="col-lg-4">
                         <div class="card card-user">
                             <div class="image">
                                 <img src="/paper-dashboard/assets/img/background.jpg" alt="..."/>
@@ -23,17 +24,32 @@
                             <hr>
                             <div class="text-center">
                                 <div class="row">
-                                    <div class="col-md-3 col-md-offset-1">
-                                        <h5>12<br /><small>Files</small></h5>
+                                    <% if project.branches_count.blank? && project.issues_count.blank? %> 
+                                     <div class="col-md-3 col-md-offset-1">
+                                         <p> Please pay your deposit to activate the statistics </p>
+                                     </div>
+                                    <% else %>
+                                        <div class="col-md-3 col-md-offset-1">
+                                        <h5><%= project.branches_count %><br /><small>Branches</small></h5>
                                     </div>
                                     <div class="col-md-4">
-                                        <h5>2GB<br /><small>Used</small></h5>
+                                        <h5><%= project.issues_count %><br /><small>Features Created</small></h5>
                                     </div>
                                     <div class="col-md-3">
-                                        <h5>24,6$<br /><small>Spent</small></h5>
+                                        <h5><%= project.closed_issues_count %><br /><small>Finished Features</small></h5>
                                     </div>
+                                    <% end %>
+                                    
                                 </div>
                             </div>
                         </div>
                 	 <% end %>
               
+ 
+                    </div>
+                    </div>
+                    </div>
+                	 
+        
+    </div>
+       
