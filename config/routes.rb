@@ -16,5 +16,5 @@ Rails.application.routes.draw do
     resources :projects do 
       resources :project_milestones
     end
-  root to: 'visitors#index'
+  root to: 'projects#index'
 end

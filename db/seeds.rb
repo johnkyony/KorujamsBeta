@@ -30,3 +30,43 @@
     
 #   end
 # end
+
+# The github setup 
+github = Github.new login:'jkyony@gmail.com', password:'f@cus1sbr1ght21'
+# The update method for the projects branches count
+projects = Project.all
+#     projects.each do |project|
+#       project = Project.find_by_id(project.id)
+#       project_branches = github.repos.branches.list 'johnkyony' , project.repo_name
+#       project.update_attribute :branches_count , project_branches.count
+      
+#     end
+    
+# the update the issues count 
+
+# projects.each do |project|
+#     project = Project.find_by_id(project.id)
+#     project_issues = github.issues.milestones.list state:'all', user: 'johnkyony' , repo: project.repo_name
+#     project.update_attribute :issues_count , project_issues.count
+# end
+
+# projects.each do |project|
+#     project = Project.find_by_id(project.id)
+#     project_closed_issues = github.issues.milestones.list state:'closed', user: 'johnkyony' , repo: project.repo_nametel
+#     project.update_attribute :closed_issues_count , project_closed_issues.count
+# end
+
+# the seed data for the milestones_states 
+all_stored_projects = Project.all 
+client = Octokit::Client.new(:login => 'jkyony@gmail.com' , :password => 'f@cus1sbr1ght21')
+all_stored_projects.each do |project|
+  listing_milestones_of_project = client.list_milestones("johnkyony/#{project.repo_name}" ,:state => "all")
+  
+  if ! listing_milestones_of_project.nil?
+      listing_milestones_of_project.each do |milestone|
+          project_milestone = ProjectMilestone.find_by_title(milestone.id)
+          project_milestone.update_attribute :state , milestone.state
+      end
+    
+  end
+end

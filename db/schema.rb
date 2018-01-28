@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180122165221) do
+ActiveRecord::Schema.define(version: 20180126104955) do
 
   create_table "project_milestones", force: :cascade do |t|
     t.integer  "project_id"
@@ -21,17 +21,25 @@ ActiveRecord::Schema.define(version: 20180122165221) do
     t.datetime "updated_at",   null: false
     t.integer  "milestone_id"
     t.string   "avatar_url"
+    t.string   "state"
+    t.integer  "user_id"
   end
 
   add_index "project_milestones", ["project_id"], name: "index_project_milestones_on_project_id"
+  add_index "project_milestones", ["user_id"], name: "index_project_milestones_on_user_id"
 
   create_table "projects", force: :cascade do |t|
     t.string   "repo_id"
     t.string   "repo_name"
     t.string   "repo_description"
     t.integer  "user_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.string   "branches_count"
+    t.string   "issues_count"
+    t.string   "closed_issues_count"
+    t.string   "project_solution_to_problem"
+    t.string   "project_expectation"
   end
 
   add_index "projects", ["user_id"], name: "index_projects_on_user_id"
