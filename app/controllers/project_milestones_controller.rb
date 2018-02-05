@@ -2,10 +2,16 @@ class ProjectMilestonesController < ApplicationController
    before_action :set_project 
   
   def index
-    @project_milestones = ProjectMilestone.where(project_id: @project.id)
-    if @project_milestones.blank?
-      @project 
-    end
+    
+    @features = ProjectMilestone.where(project_id: @project.id)
+    # paid features 
+    
+    # this is shall check if the user has paid deposit or not for the current project , if he has  then display the button pay feature 
+    @project_feature_count =  @features.count 
+    @project_deposit_status = DepositPaid.find_by_project_id(@project.id)
+    
+    
+    
   end
 
   def new

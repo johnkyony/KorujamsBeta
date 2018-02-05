@@ -52,7 +52,7 @@ projects = Project.all
 
 # projects.each do |project|
 #     project = Project.find_by_id(project.id)
-#     project_closed_issues = github.issues.milestones.list state:'closed', user: 'johnkyony' , repo: project.repo_nametel
+#     project_closed_issues = github.issues.milestones.list state:'closed', user: 'johnkyony' , repo: project.repo_name
 #     project.update_attribute :closed_issues_count , project_closed_issues.count
 # end
 

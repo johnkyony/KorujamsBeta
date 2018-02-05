@@ -42,7 +42,7 @@
                         </div>
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">All Features</h4>
+                                <h4 class="title">Features Paying for</h4>
                             </div>
                             <div class="content">
                                 <ul class="list-unstyled team-members">
@@ -60,7 +60,7 @@
                                                     </div>
 
                                                     <div class="col-xs-3 text-right">
-                                                        <btn class="btn btn-sm btn-success btn-icon"><i class="fa fa-times"></i></btn>
+                                                        <btn class="btn btn-sm btn-success btn-icon"><i class="fa fa-envelope"></i></btn>
                                                     </div>
                                                 </div>
                                             </li>
@@ -101,18 +101,19 @@
                                   </div>
                               </div>
                               
-                              
+                              <div class="row">
+                                  <div class="col-lg-6">
+                                      <h5 class="title">Deposit amount and calculation</h5>
+                                      <p class="text-info">R<%= @deposit_amount %></p>
+                                      
+                                      <p class="text-warning">(5 features * 1000) * 40% </p>
+                                  </div>
+                              </div>
                               <div class="row">
                                   <div class="col-lg-6">
                                       <div class="text-center">
-                                          <% if @project_feature_count == 5 && @project_deposit_status.blank?%>
                                            
-                                            <%= link_to "Pay Deposit " , new_project_pay_deposit_path(@project.id) , class: "btn btn-info btn-fill btn-wd"%>
-                                            <% elsif @project_feature_count == 5 && ! @project_deposit_status.blank? %>
-                                             <%= link_to "Pay Next Feature " , new_project_pay_deposit_path(@project.id) , class: "btn btn-info btn-fill btn-wd"%>
-                                            <% else %>
-                                            <%= link_to "Create A New Feature " ,  new_project_project_milestone_path(@project.id) , class: "btn btn-info btn-fill btn-wd"%>
-                                            <% end %>
+                                            <%= link_to "Pay Now " , project_pay_deposits_path(@project.id) , method: :post , class: "btn btn-info btn-fill btn-wd"%>
 
                                          
                                          
