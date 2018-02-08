@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180201011725) do
+ActiveRecord::Schema.define(version: 20180205235753) do
 
 # Could not dump table "deposit_paids" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
@@ -22,8 +22,10 @@ ActiveRecord::Schema.define(version: 20180201011725) do
     t.string   "transaction_id"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.integer  "project_id"
   end
 
+  add_index "feature_payments", ["project_id"], name: "index_feature_payments_on_project_id"
   add_index "feature_payments", ["project_milestone_id"], name: "index_feature_payments_on_project_milestone_id"
 
   create_table "feature_prices", force: :cascade do |t|

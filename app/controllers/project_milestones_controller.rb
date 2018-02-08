@@ -4,8 +4,10 @@ class ProjectMilestonesController < ApplicationController
   def index
     
     @features = ProjectMilestone.where(project_id: @project.id)
-    # paid features 
-    
+    # paid features all the features that have been paid on this project
+    @get_all_paid_features = FeaturePayment.where(project_id: @project.id)
+    all_paid_features_milestone_id = @get_all_paid_features.pluck(:project_milestone_id)
+    @paid_features = ProjectMilestone.where(id: all_paid_features_milestone_id)
     # this is shall check if the user has paid deposit or not for the current project , if he has  then display the button pay feature 
     @project_feature_count =  @features.count 
     @project_deposit_status = DepositPaid.find_by_project_id(@project.id)
@@ -62,6 +64,10 @@ class ProjectMilestonesController < ApplicationController
     end
     
     
+  end
+  
+  def show
+    @feature = ProjectMilestone.find_by_id(params[:id])
   end
   private 
   

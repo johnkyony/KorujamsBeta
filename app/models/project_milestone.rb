@@ -1,5 +1,6 @@
 class ProjectMilestone < ActiveRecord::Base
   belongs_to :project
+  has_many :feature_payment
    after_initialize :set_default_state, :if => :new_record?
   validates :project_id , presence: true
   validates :title , presence: true

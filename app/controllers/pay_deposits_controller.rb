@@ -64,7 +64,7 @@ class PayDepositsController < ApplicationController
   
   def initial_two_deposit_into_feature_paid
     @features.each do | feature|
-      FeaturePayment.create(project_milestone_id: feature.id , amount: (@deposit_amount / 2))
+      FeaturePayment.create(project_milestone_id: feature.id , amount: (@deposit_amount / 2) , project_id: @project.id)
     end
   end
   

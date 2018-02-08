@@ -58,9 +58,13 @@
                                                        <%= feature.title %>
                                                        
                                                     </div>
+                                                            
+
 
                                                     <div class="col-xs-3 text-right">
-                                                        <btn class="btn btn-sm btn-success btn-icon"><i class="fa fa-times"></i></btn>
+                                                        <a href="/projects/<%= @project.id %>/project_milestones/<%= feature.id%>" target= "_parent">
+                                                        <btn class="btn btn-sm btn-success "><i class="fas fa-long-arrow-alt-right"></i></btn>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </li>
@@ -75,6 +79,7 @@
                             <div class="header">
                                 <h3 class="title">Project Details</h4>
                             </div>
+                            <hr>
                             <div class="content">
                                  <div class="row">
                                   <div class="col-lg-6">
@@ -101,6 +106,16 @@
                                   </div>
                               </div>
                               
+                              <% if ! @get_all_paid_features.blank? %>
+                                  <div class="row">
+                                  <div class="col-lg-6">
+                                      <h5 class="title">Paid Features</h5>
+                                      <% @paid_features.each do |feature| %>
+                                      <p class="text-info"><%= feature.title%></p>
+                                      <% end %>
+                                  </div>
+                              </div>
+                              <% end %>
                               
                               <div class="row">
                                   <div class="col-lg-6">
