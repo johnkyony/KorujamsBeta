@@ -1,5 +1,4 @@
 class PayFeaturesController < ApplicationController
-  
   before_action :set_project
   def new
    last_feature_paid_for = FeaturePayment.where(project_id: params[:project_id]).pluck(:project_milestone_id).last

@@ -1,7 +1,7 @@
 class ProjectMilestone < ActiveRecord::Base
   # the search query for milestones for projects
   include OrderQuery
-  order_query :order_features , [:project_id , :desc] , [:id , :desc]
+  order_query :order_features , [:project_id , :desc] , [:id , :asc]
   
   belongs_to :project
   has_many :feature_payment
