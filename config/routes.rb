@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   end
   
   # routes for paying features 
-  resources :project_milestones do 
+  resources :project do 
     resources :pay_features
   end
   # routes for projects and their milestones 
