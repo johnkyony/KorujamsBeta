@@ -1,4 +1,8 @@
 class ProjectMilestone < ActiveRecord::Base
+  # the search query for milestones for projects
+  include OrderQuery
+  order_query :order_features , [:project_id , :desc] , [:id , :desc]
+  
   belongs_to :project
   has_many :feature_payment
    after_initialize :set_default_state, :if => :new_record?

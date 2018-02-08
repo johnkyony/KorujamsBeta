@@ -194,6 +194,9 @@ GEM
       rack (>= 1.2, < 3)
     octokit (4.8.0)
       sawyer (~> 0.8.0, >= 0.5.3)
+    order_query (0.3.4)
+      activerecord (>= 4.0, < 6.0)
+      activesupport (>= 4.0, < 6.0)
     orm_adapter (0.5.0)
     pry (0.11.3)
       coderay (~> 1.1.0)
@@ -344,6 +347,7 @@ DEPENDENCIES
   minitest-rails-capybara
   minitest-reporters
   octokit (~> 4.0)
+  order_query
   pry-byebug
   pry-rails
   pundit

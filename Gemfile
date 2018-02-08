@@ -70,3 +70,6 @@ end
 gem "github_api"
 # the second github api 
 gem "octokit", "~> 4.0"
+
+# the database searching gem 
+gem 'order_query'
