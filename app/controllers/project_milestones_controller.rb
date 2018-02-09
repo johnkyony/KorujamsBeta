@@ -79,11 +79,5 @@ class ProjectMilestonesController < ApplicationController
   def set_project
     @project = Project.find(params[:project_id])
   end
-# remember to make this more dynamic 
-  def set_account_balance
-    @feature_payment_history = FeaturePayment.where(project_id: @project.id)
-    @total_amount_paid_thus_far = 1000 * @feature_payment_history.count
-    @account_balance = 5000 - (@feature_payment_history.count * 1000)
-  end
-  
+ 
 end

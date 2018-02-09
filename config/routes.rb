@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'account_details/index'
+
   # get 'pay_features/new'
 
   # get 'pay_features/create'
@@ -22,7 +24,12 @@ Rails.application.routes.draw do
   resources :project_milestones
   resources :pay_features
   resources :pay_deposits
-  
+  resources :account_details
+
+  # routes for project account details 
+  resources :projects do 
+   resources :account_details
+  end 
   # routes for paying deposit for project 
   resources :project do 
     resources :pay_deposits

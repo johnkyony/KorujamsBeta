@@ -1,0 +1,34 @@
+<div class="content">
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <div class= "card">
+      <div class= "header">
+      <h4 class= "title">Project Account Details</h4>
+      <p class= "category">All your payment history of this project</p>
+      </div>
+      <div class= "content table-responsive table-full-width">
+	 <table class= "table table-striped">
+		<thead>
+                 <th>Invoice Number</th>
+                 <th>Feature Paid For</th>
+                 <th> Payment Reference Number </th>
+                 <th> Amount Paid </th>
+                </thead>
+               <tbody>
+               <%= @feature_payment_history.each do |feature_payment| %>
+              <td> <%= feature_payment.id %></td>
+              <td><%= feature_payment.project_milestone.title %> </td>
+              <td><%= feature_payment.transaction_id %></td>
+              <td><%= feature_payment.amount %></td>
+            <%end %>       
+
+		</tbody>
+         </table>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+
+</div>

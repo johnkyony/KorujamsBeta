@@ -110,15 +110,29 @@
                                   <div class="row">
                                   <div class="col-lg-6">
                                       <h5 class="title">Paid Features</h5>
+                                   
+
                                       <% @paid_features.each do |feature| %>
                                       <p class="text-info"><%= feature.title%></p>
                                       <% end %>
                                   </div>
                               </div>
+                               <div class="row">
+				<div class="col-xs-6">
+				<p class="text-danger"> Project Account Details</p>	
+				 </div>	
+                                    <div class="col-xs-3 text-right">
+                                  <a href="/projects/<%= @project.id%>/account_details">
+					<btn class="btn btn-sm btn-success "><i class="fas fa-long-arrow-alt-right"></i></btn>
+				</a>
+				</div>
+                                </div>
                               <% end %>
+                               <hr>
+                                <br>
                               
                               <div class="row">
-                                  <div class="col-lg-6">
+                                  <div class="col-md-8 col-md-offset-1">
                                       <div class="text-center">
                                           <% if @project_feature_count == 5 && @project_deposit_status.blank?%>
                                            
