@@ -7,7 +7,20 @@ class User < ActiveRecord::Base
   enum role: [:user, :admin]
   after_initialize :set_default_role, :if => :new_record?
 
+  # the author and receiver 
+
+  has_many :authored_conversations , class_name: 'Conversation' , foreign_key: 'author_id' 
+  
+  has_many :received_conversations , class_name: 'Conversation' , foreign_key: 'received_id'
+
+  # the personal_messages associations 
+
+  has_many :personal_messages , dependent: :destroy
   def set_default_role
     self.role ||= :user
+  end
+  # the conversation name
+  def name
+   email.split('@')[0]
   end
 end

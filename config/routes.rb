@@ -1,21 +1,5 @@
 Rails.application.routes.draw do
-  get 'account_details/index'
 
-  # get 'pay_features/new'
-
-  # get 'pay_features/create'
-
-  # get 'pay_deposits/new'
-
-  # get 'pay_deposits/create'
-
-  # get 'project_milestones/index'
-
-  # get 'project_milestones/new'
-
-  # get 'projects/index'
-
-  # get 'projects/new'
 
   devise_for :users
   resources :users
@@ -25,6 +9,8 @@ Rails.application.routes.draw do
   resources :pay_features
   resources :pay_deposits
   resources :account_details
+  resources :conversations , only: [:index , :show]
+  resources :personal_messages , only: [:create]
 
   # routes for project account details 
   resources :projects do 

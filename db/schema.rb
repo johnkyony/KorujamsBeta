@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180205235753) do
+ActiveRecord::Schema.define(version: 20180209173603) do
+
+  create_table "conversations", force: :cascade do |t|
+    t.integer  "author_id"
+    t.integer  "receiver_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "conversations", ["author_id", nil], name: "index_conversations_on_author_id_and_receiver_idi", unique: true
+  add_index "conversations", ["author_id"], name: "index_conversations_on_author_id"
 
 # Could not dump table "deposit_paids" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
@@ -27,6 +37,17 @@ ActiveRecord::Schema.define(version: 20180205235753) do
 
   add_index "feature_payments", ["project_id"], name: "index_feature_payments_on_project_id"
   add_index "feature_payments", ["project_milestone_id"], name: "index_feature_payments_on_project_milestone_id"
+
+  create_table "personal_messages", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "conversation_id"
+    t.integer  "user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "personal_messages", ["conversation_id"], name: "index_personal_messages_on_conversation_id"
+  add_index "personal_messages", ["user_id"], name: "index_personal_messages_on_user_id"
 
   create_table "project_milestones", force: :cascade do |t|
     t.integer  "project_id"
