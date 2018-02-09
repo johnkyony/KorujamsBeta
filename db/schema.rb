@@ -28,28 +28,6 @@ ActiveRecord::Schema.define(version: 20180205235753) do
   add_index "feature_payments", ["project_id"], name: "index_feature_payments_on_project_id"
   add_index "feature_payments", ["project_milestone_id"], name: "index_feature_payments_on_project_milestone_id"
 
-  create_table "feature_prices", force: :cascade do |t|
-    t.string   "service_feature_name"
-    t.float    "amount"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-  end
-
-  create_table "payments", force: :cascade do |t|
-    t.integer  "pf_payment_id"
-    t.string   "payment_status"
-    t.string   "item_name"
-    t.integer  "amount_gross"
-    t.integer  "amount_fee"
-    t.integer  "amount_net"
-    t.integer  "merchant_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.integer  "project_id"
-  end
-
-  add_index "payments", ["project_id"], name: "index_payments_on_project_id"
-
   create_table "project_milestones", force: :cascade do |t|
     t.integer  "project_id"
     t.string   "title"
