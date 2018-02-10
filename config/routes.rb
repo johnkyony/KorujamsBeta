@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  get 'developer_section/index'
+
   devise_for :users
   resources :users
   # non nested routes 
