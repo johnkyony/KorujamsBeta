@@ -20,7 +20,4 @@ class User < ActiveRecord::Base
     self.role ||= :user
   end
   # the conversation name
-  def name
-   email.split('@')[0]
-  end
 end

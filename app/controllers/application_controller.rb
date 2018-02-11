@@ -11,5 +11,21 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
     devise_parameter_sanitizer.permit(:account_update, keys: [:name])
   end
+  # the routing after the login of different 
+  def after_sign_in_path_for(resource)
+   if resource.user?
+    project_index_path
+   else
+    if resource.developer?
+      developers_path
+    else
+     if resource.admin?
+       admins_path
+     else
+      landing_pages_path
+     end
+    end
+   end
+  end
 
 end

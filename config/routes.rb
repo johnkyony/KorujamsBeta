@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
 
-  get 'developer_section/index'
 
   devise_for :users
   resources :users
@@ -13,7 +12,9 @@ Rails.application.routes.draw do
   resources :account_details
   resources :conversations , only: [:index , :show]
   resources :personal_messages , only: [:create]
-
+  resources :developers
+  resources :landing_pages
+  resources :admins
   # routes for project account details 
   resources :projects do 
    resources :account_details
