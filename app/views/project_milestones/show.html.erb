@@ -7,7 +7,11 @@
                             
                             <div class="header">
                                  <div class="col-xs-3 ">
+                                     <% if current_user.user? %>
                                     <a href="/projects/<%= @project.id %>/project_milestones/" target= "_parent">
+                                        <% else%>
+                                         <a href="/developers" target= "_parent">
+                                        <% end %>
                                     <btn class="btn btn-sm btn-success "><i class="fas fa-long-arrow-alt-left"></i></btn>
                                     </a>
                                 </div>

@@ -15,10 +15,17 @@
 
             <ul class="nav">
                 <li class="active">
+                    <% if current_user.user? %>
                     <a href="/">
                         <i class="ti-panel"></i>
                         <p>Dashboard</p>
                     </a>
+                    <% else %>
+                    <a href="/developers">
+                        <i class="ti-panel"></i>
+                        <p>Dashboard</p>
+                    </a>
+                    <% end %>
                 </li>
                 <li>
                     <a href="/projects/new">
@@ -29,8 +36,8 @@
                
                 <li>
                     <a href="#">
-                        <i class="ti-wallet"></i>
-                        <p>Payments</p>
+                        <i class="ti-comment-alt"></i>
+                        <p>Messages</p>
                     </a>
                 </li>
            
