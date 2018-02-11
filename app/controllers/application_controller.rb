@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   # the routing after the login of different 
   def after_sign_in_path_for(resource)
    if resource.user?
-    project_index_path
+    projects_path
    else
     if resource.developer?
       developers_path
