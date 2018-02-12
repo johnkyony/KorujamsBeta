@@ -86,6 +86,8 @@ GEM
     em-websocket (0.5.1)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
+    emoji (1.0.7)
+      json
     erubi (1.7.0)
     erubis (2.7.0)
     eventmachine (1.2.5)
@@ -333,6 +335,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   devise
+  emoji
   faker
   font-awesome-sass
   github_api

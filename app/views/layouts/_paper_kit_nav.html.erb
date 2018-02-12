@@ -15,6 +15,7 @@
 
             <ul class="nav">
                 <li class="active">
+                    <% if user_signed_in? %>
                     <% if current_user.user? %>
                     <a href="/">
                         <i class="ti-panel"></i>
@@ -26,6 +27,7 @@
                         <p>Dashboard</p>
                     </a>
                     <% end %>
+                    <% end %>
                 </li>
                 <li>
                     <a href="/projects/new">
@@ -35,7 +37,7 @@
                 </li>
                
                 <li>
-                    <a href="#">
+                    <a href="/conversations">
                         <i class="ti-comment-alt"></i>
                         <p>Messages</p>
                     </a>

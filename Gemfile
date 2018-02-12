@@ -73,3 +73,8 @@ gem "octokit", "~> 4.0"
 
 # the database searching gem 
 gem 'order_query'
+
+# the  emoji gem 
+
+gem 'emoji'
+

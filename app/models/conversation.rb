@@ -22,5 +22,11 @@ class Conversation < ActiveRecord::Base
   def participates?(user)
    author == user || receiver == user
   end
+  
+  # between is a scope that returns a conversation for two users 
+  scope :between , -> (sender_id , receiver_id) do 
+   where(author_id: sender_id , receiver_id: receiver_id).limit(1) || where(author_id: receiver_id ,
+   receiver_id: sender_id).limit(1 )
+  end
 
 end

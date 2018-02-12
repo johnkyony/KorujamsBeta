@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :pay_deposits
   resources :account_details
   resources :conversations , only: [:index , :show]
-  resources :personal_messages , only: [:create]
+  resources :personal_messages 
   resources :developers
   resources :landing_pages
   resources :admins
