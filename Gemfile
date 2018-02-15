@@ -8,7 +8,7 @@ gem 'jbuilder', '~> 2.0'
 
 group :development, :test do
   gem 'byebug'
-  gem 'sqlite3'
+  # gem 'sqlite3'
 end
 group :development do
   gem 'web-console', '~> 2.0'
@@ -66,9 +66,9 @@ group :test do
 end
 group :production do
   gem 'rails_12factor'
-  gem 'pg' , '0.18.4'
+  
 end
-
+gem 'pg' , '0.18.4'
 
 # The github api 
 gem "github_api"
