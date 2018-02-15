@@ -1,55 +1,52 @@
 
-    <div class="container-fluid">
-        <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                       <% @projects.each do |project| %>
-                	       <div class="col-lg-4">
-                        <div class="card card-user">
-                            <div class="image">
-                                <img src="/paper-dashboard/assets/img/background.jpg" alt="..."/>
-                            </div>
-                            <div class="content">
-                                <div class="author">
-                                  <img class="avatar border-white" src="/paper-dashboard/assets/img/faces/face-2.jpg" alt="..."/>
-                                  <h4 class="title"><%= project.repo_name %><br />
-                                     <a href="/projects/<%=project.id%>/project_milestones"><small>@<%= project.repo_name %></small></a>
-                                  </h4>
-                                </div>
-                                <p class="description text-center">
-                                    <%= project.repo_description %>
-                                </p>
-                            </div>
-                            <hr>
-                            <div class="text-center">
-                                <div class="row">
-                                    <% if project.branches_count.blank? && project.issues_count.blank? %> 
-                                     <div class="col-md-4">
-                                         <p> Please pay your deposit to activate the statistics </p>
-                                     </div>
-                                    <% else %>
-                                        <div class="col-md-3 col-md-offset-1">
-                                        <h5><%= project.branches_count %><br /><small>Branches</small></h5>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <h5><%= project.issues_count %><br /><small>Features Created</small></h5>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <h5><%= project.closed_issues_count %><br /><small>Finished Features</small></h5>
-                                    </div>
-                                    <% end %>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                	 <% end %>
-              
- 
-                    </div>
-                    </div>
-                    </div>
-                	 
-        
-    </div>
        
+
+<div class="content">
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <div class= "card">
+      <div class= "header">
+        
+      <h4 class= "title">Blue Prints</h4>
+      <p class= "category">All your created projects</p>
+      <div class="row">
+       <div class="col-md-12">
+         
+                            <div class="content">
+                                <ul class="list-unstyled team-members">
+                                    <% @projects.each do |project|%>
+                                            <li>
+                                                <div class="row">
+                                                    <div class="col-xs-3">
+                                                        <div class="avatar">
+                                                            <img src="/paper-dashboard/assets/img/faces/face-0.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-6">
+                                                      <%= project.repo_name %>
+                                                       
+                                                    </div>
+                                                            
+
+
+                                                    <div class="col-xs-3 text-right">
+                                                        <a href="/projects/<%=project.id%>/project_milestones" target= "_parent">
+                                                        <btn class="btn btn-sm btn-success "><i class="fas fa-long-arrow-alt-right"></i></btn>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <% end%>
+                                      
+                                        </ul>
+                            </div>
+                       
+       </div>
+      </div>
+      </div>
+       </div>
+     </div>
+
+
+

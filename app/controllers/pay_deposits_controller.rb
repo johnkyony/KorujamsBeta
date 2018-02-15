@@ -28,8 +28,8 @@ class PayDepositsController < ApplicationController
       redirect_to project_project_milestones_path(@project.id)
       
     else
-      flash[:notice] = "This is a failure of a transaction"
-      redirect_to project_pay_deposit_path(@project.id)
+      flash[:sucess] = "This is a failure of a transaction"
+      redirect_to project_project_milestones_path(@project.id)
     end
    
   end
