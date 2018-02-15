@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20180209173603) do
 
   # These are extensions that must be enabled in order to support this database
@@ -59,6 +60,31 @@ ActiveRecord::Schema.define(version: 20180209173603) do
 
   add_index "personal_messages", ["conversation_id"], name: "index_personal_messages_on_conversation_id", using: :btree
   add_index "personal_messages", ["user_id"], name: "index_personal_messages_on_user_id", using: :btree
+=======
+ActiveRecord::Schema.define(version: 20180128181542) do
+
+  create_table "feature_prices", force: :cascade do |t|
+    t.string   "service_feature_name"
+    t.float    "amount"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.integer  "pf_payment_id"
+    t.string   "payment_status"
+    t.string   "item_name"
+    t.integer  "amount_gross"
+    t.integer  "amount_fee"
+    t.integer  "amount_net"
+    t.integer  "merchant_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "project_id"
+  end
+
+  add_index "payments", ["project_id"], name: "index_payments_on_project_id"
+>>>>>>> offsite_gem_integration
 
   create_table "project_milestones", force: :cascade do |t|
     t.integer  "project_id"

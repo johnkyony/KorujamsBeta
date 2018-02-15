@@ -1,0 +1,6 @@
+payfast:
+    test_mode: true
+    login: "jkyony@payfast.co.za"
+    merchant_id: "12543441"
+    merchant_key: "qppoaaxpsb1g2"
+    password: "f@cus1sbr1ght21"

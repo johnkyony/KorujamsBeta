@@ -1,0 +1,10 @@
+# Read about fixtures at
+# http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  service_feature_name: MyString
+  amount: 1.5
+
+two:
+  service_feature_name: MyString
+  amount: 1.5
