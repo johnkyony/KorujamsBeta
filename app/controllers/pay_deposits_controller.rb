@@ -7,7 +7,12 @@ class PayDepositsController < ApplicationController
   
   def new
     @deposit_to_be_paid = DepositPaid.new
-   
+    # payfast description bang in , make more dynamic 
+    @project_deposit_payment = @project.repo_name + "\tDeposit "
+    # payfast notify_url 
+    @project_deposit_payfast_notify_url = 'http://korujamswebdevelopment-jkyony.c9users.io:8080/pay_fast/project/<%= @project.id %>/paid'
+    @project_deposit_payfast_cancel_url = 'http://korujamswebdevelopment-jkyony.c9users.io:8080/pay_fast/project/<%= @project.id %>/cancel'
+    @project_deposit_payfast_return_url = 'http://korujamswebdevelopment-jkyony.c9users.io:8080/pay_fast/project/<%= @project.id %>/success'
   end
 
   def create

@@ -1,4 +1,6 @@
 class PaymentsController < ApplicationController
+  before_action :set_project
+  
   skip_before_action :verify_authenticity_token
   include OffsitePayments::Integrations
   
@@ -16,17 +18,18 @@ class PaymentsController < ApplicationController
          payment_successfull_data = Payment.new
          payment_successfull_data.pf_payment_id = @notification.transaction_id
          payment_successfull_data.payment_status = @notification.status
-         payment_successfull_data.project_milestone_id = @project_milestone.id 
-         payment_successfull_data.item_name = @project_milestone.title + "Feature"
+
          payment_successfull_data.save 
          if payment_successfull_data.save
-           render nothing: true
+          flash[:notice] = "This is a successful transaction"
+          redirect_to root_path
          end
          
          
         
       else
-        render nothing: true
+       flash[:sucess] = "This is a failure of a transaction"
+      redirect_to root_path
       end
       
     else
@@ -35,12 +38,19 @@ class PaymentsController < ApplicationController
   end
 
   def success
+     flash[:notice] = "This is a successful transaction"
+    redirect_to root_path
   end
 
   def fail
   end
   
   private
+  
+  def set_project
+    @project = Project.find_by_id(params[:project_id])
+    
+  end
   
   def set_project_milestone
     @project_milestone = ProjectMilestone.find(params[:project_milestone_id])

@@ -113,9 +113,26 @@
                                   <div class="col-lg-6">
                                       <div class="text-center">
                                            
-                                            <%= link_to "Pay Now " , project_pay_deposits_path(@project.id) , method: :post , class: "btn btn-info btn-fill btn-wd"%>
+                                           
 
-                                         
+                                         <%= payment_service_for @project.repo_name, Rails.configuration.offsite_payments['payfast']['login'], amount:  @deposit_amount, service: :pay_fast do |service| %>
+
+                                        <% service.item_name  @project_deposit_payment  %>
+                                        <% service.item_description @project.repo_description %>
+                                        <% service.currency 'ZAR' %>
+                                        <% service.return_url 'http://korujamswebdevelopment-jkyony.c9users.io:8080/pay_fast/success' %>
+                                        <% service.cancel_url 'http://korujamswebdevelopment-jkyony.c9users.io:8080/pay_fast/cancel' %>
+                                        <% service.notify_url 'http://korujamswebdevelopment-jkyony.c9users.io:8080/pay_fast/paid' %>
+                                    
+                                        <%# service.notify_url url_for(:only_path => false, :action => 'notify') %>
+                                        <%# service.return_url url_for(:only_path => false, :action => 'done') %>
+                                        <%# service.cancel_return_url 'http://mystore.com' %>
+                                    
+                                        <% service.merchant_id Rails.configuration.offsite_payments['payfast']['merchant_id'].to_i %>
+                                        <% service.merchant_key Rails.configuration.offsite_payments['payfast']['merchant_key'] %>
+                                    
+                                        <%= submit_tag "Pay!", class: 'btn btn-info btn-fill btn-wd' %>
+                                    <% end %>
                                          
                                     </div>
                                     <div class="clearfix"></div>
