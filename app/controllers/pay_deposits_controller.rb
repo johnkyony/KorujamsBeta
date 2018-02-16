@@ -6,13 +6,20 @@ class PayDepositsController < ApplicationController
   
   
   def new
-    @deposit_to_be_paid = DepositPaid.new
+   
+    deposit_transaction_checker = Payment.find_by_project_id(params[:project_id])
+    if  deposit_transaction_checker.blank?
+       @deposit_to_be_paid = DepositPaid.new
     # payfast description bang in , make more dynamic 
     @project_deposit_payment = @project.repo_name + "\tDeposit "
     # payfast notify_url 
-    @project_deposit_payfast_notify_url = 'http://korujamswebdevelopment-jkyony.c9users.io:8080/pay_fast/project/<%= @project.id %>/paid'
-    @project_deposit_payfast_cancel_url = 'http://korujamswebdevelopment-jkyony.c9users.io:8080/pay_fast/project/<%= @project.id %>/cancel'
-    @project_deposit_payfast_return_url = 'http://korujamswebdevelopment-jkyony.c9users.io:8080/pay_fast/project/<%= @project.id %>/success'
+    # make sure deposit button doesn't repeat again
+    payment_processing_time = Payment.create(project_id: @project.id , payment_status: "Pending" , item_name: @project.repo_name , amount_net:  @deposit_amount)
+    else
+      flash[:notice] = "Your transaction is being processed you shall be noticed when the project status changes"
+      redirect_to project_project_milestones_path(@project.id)
+    end
+      
   end
 
   def create

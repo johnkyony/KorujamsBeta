@@ -11,7 +11,7 @@ class ProjectMilestonesController < ApplicationController
     # this is shall check if the user has paid deposit or not for the current project , if he has  then display the button pay feature 
     @project_feature_count =  @features.count 
     @project_deposit_status = DepositPaid.find_by_project_id(@project.id)
-    
+    @is_project_processing = Payment.where(project_id: @project.id , payment_status: "Pending")
     
     
   end

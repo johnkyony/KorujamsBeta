@@ -22,11 +22,11 @@
                             <hr>
                             <div class="text-center">
                                 <div class="row">
-                                     <% if @project.branches_count.blank? && @project.issues_count.blank? %> 
-                                     <div class="col-md-3 col-md-offset-1">
+                                     <% if @project.branches_count.blank? && @project.issues_count.blank? && @is_project_processing.blank? %> 
+                                     <div class="col-md-6">
                                          <p> Please pay your deposit to activate the statistics </p>
                                      </div>
-                                    <% else %>
+                                    <% elsif ! @project.branches_count.blank? && ! @project.issues_count.blank? %>
                                         <div class="col-md-3 col-md-offset-1">
                                         <h5><%= @project.branches_count %><br /><small>Branches</small></h5>
                                     </div>
@@ -36,6 +36,9 @@
                                     <div class="col-md-3">
                                         <h5><%= @project.closed_issues_count %><br /><small>Finished Features</small></h5>
                                     </div>
+                                    <% else %>
+                                      <p> We are busy processing your transaction , we shall notify you when we have processed the transaction</p>
+
                                     <% end %>
                                 </div>
                             </div>
@@ -134,13 +137,15 @@
                               <div class="row">
                                   <div class="col-md-8 col-md-offset-1">
                                       <div class="text-center">
-                                          <% if @project_feature_count == 5 && @project_deposit_status.blank?%>
+                                          <% if @project_feature_count == 5 && @project_deposit_status.blank? && @is_project_processing.blank?%>
                                            
                                             <%= link_to "Pay Deposit " , new_project_pay_deposit_path(@project.id) , class: "btn btn-info btn-fill btn-wd"%>
                                             <% elsif @project_feature_count == 5 && ! @project_deposit_status.blank? %>
                                              <%= link_to "Pay Next Feature " , new_project_pay_feature_path(@project.id) , class: "btn btn-info btn-fill btn-wd"%>
-                                            <% else %>
+                                            <% elsif @project_feature_count < 5 %>
                                             <%= link_to "Create A New Feature " ,  new_project_project_milestone_path(@project.id) , class: "btn btn-info btn-fill btn-wd"%>
+                                            <% else %>
+                                            <p> We are busy processing your transaction , we shall notify you when we have processed the transaction</p>
                                             <% end %>
 
                                          
