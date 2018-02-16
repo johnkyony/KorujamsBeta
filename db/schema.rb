@@ -59,8 +59,7 @@ ActiveRecord::Schema.define(version: 20180209173603) do
 
   add_index "personal_messages", ["conversation_id"], name: "index_personal_messages_on_conversation_id", using: :btree
   add_index "personal_messages", ["user_id"], name: "index_personal_messages_on_user_id", using: :btree
-=======
-ActiveRecord::Schema.define(version: 20180128181542) do
+
 
   create_table "feature_prices", force: :cascade do |t|
     t.string   "service_feature_name"
@@ -83,7 +82,7 @@ ActiveRecord::Schema.define(version: 20180128181542) do
   end
 
   add_index "payments", ["project_id"], name: "index_payments_on_project_id"
->>>>>>> offsite_gem_integration
+
 
   create_table "project_milestones", force: :cascade do |t|
     t.integer  "project_id"
