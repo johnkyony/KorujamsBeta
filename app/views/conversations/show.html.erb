@@ -6,8 +6,10 @@
      <div class= "card">
       <div class= "header">
         
-      <h4 class= "title">Your conversation</h4>
-      <p class= "category">Chatting with <%= @conversation.with(current_user).name %></p>
+      <h4 class= "title text-center">Your conversation</h4>
+      <p class= "category text-center">Chatting with <%= @conversation.with(current_user).name %></p>
+      <hr>
+      </div>
       <div class="row">
        <div class="col-md-12">
          
@@ -29,9 +31,22 @@
                                                          
                                                          <%= form_for @personal_message do |f| %>
                                                           <%= hidden_field_tag 'conversation_id' , @conversation.id %>
-                                                          <%= f.label :body %> 
-                                                          <%= f.text_area :body %>
-                                                          <%= f.submit  %>
+                                                            <div class="form-group">
+                                                                <label>Talk to me</label>
+                                                                
+                                                          <%= f.text_area :body, class: "form-control border-input" %>
+                                                                </div>
+                                                          
+                                                          
+                                                          <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="text-center">
+                                             <%= f.submit 'Send Message', class: 'btn btn-info btn-fill btn-wd' %>
+                                            
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        </div>
+                                    </div>
                                                          <% end %>
                                                           </div>
                                                                                                                                                                         
