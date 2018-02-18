@@ -83,6 +83,7 @@
                     <div class="col-lg-8 col-md-7">
                         <div class="card">
                             <div class="header">
+                                
                                 <h3 class="title text-center">Project Details</h4>
                             </div>
                             <hr>
@@ -111,6 +112,18 @@
                                       <p class="text-info"><%= @project.project_expectation%></p>
                                   </div>
                               </div>
+                              
+                                 <div class="row">
+                    				<div class="col-xs-6">
+                    				<p class="text-danger"> Edit Project Details</p>	
+                    				 </div>	
+                                                        <div class="col-xs-3 text-right">
+                                                      <a href="/projects/<%= @project.id%>/edit">
+                    					<btn class="btn btn-sm btn-success "><i class="fas fa-long-arrow-alt-right"></i></btn>
+                    				</a>
+                    				</div>
+                    				
+                    				</div>
                               
                               <% if ! @get_all_paid_features.blank? %>
                                   <div class="row">

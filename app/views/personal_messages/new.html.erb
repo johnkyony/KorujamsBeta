@@ -3,8 +3,20 @@
 <%= form_for @personal_message do |f| %>
   <%= hidden_field_tag 'receiver_id', @receiver.id %>
 
-  <%= f.label :body %>
-  <%= f.text_area :body %>
+  <div class="form-group">
+    <label>Talk to me</label>
+    
+<%= f.text_area :body, class: "form-control border-input" %>
+    </div>
 
-  <%= f.submit %>
+                 
+                                                          <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="text-center">
+                                             <%= f.submit 'Send Message', class: 'btn btn-info btn-fill btn-wd' %>
+                                            
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        </div>
+                                    </div>
 <% end %>

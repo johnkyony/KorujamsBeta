@@ -69,6 +69,28 @@ class ProjectMilestonesController < ApplicationController
   def show
     @feature = ProjectMilestone.find_by_id(params[:id])
   end
+  
+  def edit
+    feature_paid_checker = FeaturePayment.find_by_project_milestone_id(params[:id])
+    if feature_paid_checker.blank?
+      @project_milestone = ProjectMilestone.find(params[:id])
+    else
+        flash[:success] = "You may not change these details after feature has been paid"
+        redirect_to  project_project_milestones_path(@project.id)
+    end
+    
+  end
+  
+   def update
+    @project_milestone = ProjectMilestone.find(params[:id])
+    if @project_milestone.update_attributes(project_milestone_params)
+      # Handle a successful update.
+      redirect_to    project_project_milestone_path(@project_milestone.project_id , @project_milestone.id)
+    else
+      render 'edit'
+      
+    end
+  end
   private 
   
   def project_milestone_params

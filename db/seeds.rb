@@ -6,12 +6,14 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-repos    = Github::Client::Repos.new
+john =  User.find_by_name("john kyony")
+
+repos    = Github::Client::Repos.new login:'jkyony@gmail.com', password:'f@cus1sbr1ght21'
 response = repos.list user: 'johnkyony', per_page: 10
 
 response.each_page do |page|
   page.each do |repo|
-    project = Project.create(repo_id: repo.id , repo_name: repo.name , repo_description: repo.description)
+    project = Project.create(repo_id: repo.id , repo_name: repo.name , repo_description: repo.description , user_id: john.id)
 
 
   end
@@ -57,16 +59,16 @@ projects.each do |project|
 end
 
 # the seed data for the milestones_states 
-all_stored_projects = Project.all 
-client = Octokit::Client.new(:login => 'jkyony@gmail.com' , :password => 'f@cus1sbr1ght21')
-all_stored_projects.each do |project|
-  listing_milestones_of_project = client.list_milestones("johnkyony/#{project.repo_name}" ,:state => "all")
+# all_stored_projects = Project.all 
+# client = Octokit::Client.new(:login => 'jkyony@gmail.com' , :password => 'f@cus1sbr1ght21')
+# all_stored_projects.each do |project|
+#   listing_milestones_of_project = client.list_milestones("johnkyony/#{project.repo_name}" ,:state => "all")
   
-  if ! listing_milestones_of_project.nil?
-      listing_milestones_of_project.each do |milestone|
-          project_milestone = ProjectMilestone.find_by_title(milestone.id)
-          project_milestone.update_attribute :state , milestone.state
-      end
+#   if ! listing_milestones_of_project.nil?
+#       listing_milestones_of_project.each do |milestone|
+#           project_milestone = ProjectMilestone.find_by_title(milestone.title)
+#           project_milestone.update_attribute :state , milestone.state
+#       end
     
-  end
-end
+#   end
+# end

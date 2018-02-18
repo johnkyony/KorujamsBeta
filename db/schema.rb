@@ -49,18 +49,6 @@ ActiveRecord::Schema.define(version: 20180209173603) do
   add_index "feature_payments", ["project_id"], name: "index_feature_payments_on_project_id", using: :btree
   add_index "feature_payments", ["project_milestone_id"], name: "index_feature_payments_on_project_milestone_id", using: :btree
 
-  create_table "personal_messages", force: :cascade do |t|
-    t.text     "body"
-    t.integer  "conversation_id"
-    t.integer  "user_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
-  add_index "personal_messages", ["conversation_id"], name: "index_personal_messages_on_conversation_id", using: :btree
-  add_index "personal_messages", ["user_id"], name: "index_personal_messages_on_user_id", using: :btree
-
-
   create_table "feature_prices", force: :cascade do |t|
     t.string   "service_feature_name"
     t.float    "amount"
@@ -81,8 +69,18 @@ ActiveRecord::Schema.define(version: 20180209173603) do
     t.integer  "project_id"
   end
 
-  add_index "payments", ["project_id"], name: "index_payments_on_project_id"
+  add_index "payments", ["project_id"], name: "index_payments_on_project_id", using: :btree
 
+  create_table "personal_messages", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "conversation_id"
+    t.integer  "user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "personal_messages", ["conversation_id"], name: "index_personal_messages_on_conversation_id", using: :btree
+  add_index "personal_messages", ["user_id"], name: "index_personal_messages_on_user_id", using: :btree
 
   create_table "project_milestones", force: :cascade do |t|
     t.integer  "project_id"
@@ -138,6 +136,7 @@ ActiveRecord::Schema.define(version: 20180209173603) do
   add_foreign_key "deposit_paids", "projects"
   add_foreign_key "feature_payments", "project_milestones"
   add_foreign_key "feature_payments", "projects"
+  add_foreign_key "payments", "projects"
   add_foreign_key "personal_messages", "conversations"
   add_foreign_key "personal_messages", "users"
   add_foreign_key "project_milestones", "projects"

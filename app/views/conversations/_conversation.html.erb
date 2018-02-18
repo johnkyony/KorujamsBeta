@@ -1,9 +1,27 @@
-<div>
-<p>Chatting with <%= conversation.with(current_user).name %>
+
+
+<div class="col-md-3">
+    <div class="avatar">
+        <img src="/paper-dashboard/assets/img/faces/face-0.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+    </div>
+</div>
+<div class="col-md-9">
+    <p>Chatting with <%= conversation.with(current_user).name %>
 <br>
 <em><%= conversation.personal_messages.last.body.truncate(50) %> </em>
 <br>
 <%= link_to 'View Conversation' , conversation_path(conversation) %>
 </p>
-<hr>
+
+
+<!-- <div class=" text-right">-->
+<!--    <a href=" /conversations/<%= conversation.id %>" target= "_parent">-->
+<!--    <btn class="btn btn-sm btn-success "><i class="fas fa-long-arrow-alt-right"></i></btn>-->
+<!--    </a>-->
+<!--</div>-->
+
 </div>
+
+
+
+<hr>

@@ -1,0 +1,51 @@
+
+         <div class="col-lg-12">
+                        <div class="card">
+                            <div class="header">
+                                
+                                    <a href="/projects/<%= @project.id %>/project_milestones/" target= "_parent">
+                                    <btn class="btn btn-sm btn-success "><i class="fas fa-long-arrow-alt-left"></i></btn>
+                                    </a>
+                                
+                                <h4 class="title  text-center">Edit Your Feature</h4>
+                                   <p class= "category text-center">Tweak your feature NB: explain as if you were using the feature yourself</p>
+                                  <hr>
+                            </div>
+                            <div class="content">
+                              
+
+                                <%= form_for  [@project , @project_milestone] do |f| %>
+                                <div class="row">
+                                    <div class= "col-md-5">
+                                        <div class= "form-group">
+                                            <label>Feature Name</label>
+                                            <%= f.text_field(:title ,  placeholder: "This is what you want to call the feature" , class: "form-control border-input") %>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                               <label>Feature Description</label>
+                                                <%= f.text_area(:description, placeholder: "How  do you see yourself using this feature if you were a user", rows: 5  , cols: 5, class:  "form-control border-input") %>
+                                            </div>
+                                        </div>
+                                        
+                                            
+                                        </div>
+                                       
+                                       
+                                    <div class="text-center">
+                                         <%= f.submit 'Save Changes', class: 'btn btn-info btn-fill btn-wd' %>
+                                         
+                                       
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    </div>
+                                    
+                                    
+                                     
+                                    
+                                <% end %>
+                                

@@ -24,6 +24,30 @@ class ProjectsController < ApplicationController
 
   end
   
+  def edit
+    deposit_paid_checker = DepositPaid.find_by_project_id(params[:id])
+    if deposit_paid_checker.blank?
+      @project = Project.find(params[:id])
+    else
+        flash[:success] = "You may not change these details after deposit been paid"
+        redirect_to  project_project_milestones_path(@project.id)
+    end
+    
+  end
+  
+  def update
+     @project = Project.find(params[:id])
+    if @project.update_attributes(project_params)
+      # Handle a successful update.
+      flash[:notice] = "Changes have been saved"
+      redirect_to  project_project_milestones_path(@project.id)
+    else
+      render 'edit'
+      
+    end
+  end
+
+  
   private 
 
   def project_params

@@ -1,6 +1,23 @@
-<p><%=  personal_message.body %></p>
-<p>at <strong><%= personal_message.created_at %></strong><br>
-by <strong><%= personal_message.user.name %> </strong>
+ <div class="row">
+     <div class="col-md-3">
+    <div class="avatar">
+        <img src="/paper-dashboard/assets/img/faces/face-0.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+        
+    </div>
+    <p> <strong><%= personal_message.user.name %> </strong></p>
+</div>
+<div class="col-md-9">
+    <p><%=  personal_message.body %></p>
+<p>at <strong><%= time_ago_in_words(personal_message.created_at)  %> ago</strong><br>
+
 </p>
 
 <hr>
+    
+</div>
+
+     
+ </div>
+ 
+ 
+ 
