@@ -87,3 +87,5 @@ gem 'emoji'
 # the payment gateway gem 
 gem 'offsite_payments'
 
+# the google analytics rack gem 
+gem 'rack-google-analytics'

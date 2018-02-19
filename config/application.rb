@@ -30,5 +30,7 @@ module Korujams
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+    # the global google analytics tracking
+    config.middleware.use Rack::GoogleAnalytics, :tracker => 'UA-44991916-7'
   end
 end
