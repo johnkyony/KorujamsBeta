@@ -1,5 +1,6 @@
-
-
+<% if conversation.blank? %>
+<p>Please wait for a developer to contact you to discuss feature</p>
+<% else %>
 <div class="col-md-3">
     <div class="avatar">
         <img src="/paper-dashboard/assets/img/faces/face-0.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
@@ -25,3 +26,5 @@
 
 
 <hr>
+<%end %>
+

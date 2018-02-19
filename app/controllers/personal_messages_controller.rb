@@ -9,8 +9,8 @@ class PersonalMessagesController < ApplicationController
 
  def create
    
-   if ! params[:body].blank?
-     @conversation ||= Conversation.create(author_id: current_user.id,
+   
+    @conversation ||= Conversation.create(author_id: current_user.id,
                                           receiver_id: @receiver.id)
           
     @personal_message = current_user.personal_messages.build(personal_message_params)
@@ -18,13 +18,8 @@ class PersonalMessagesController < ApplicationController
      
      @personal_message.save!
   
-    flash[:notice] = "Your message was sent!"
+    flash[:success] = "Your message was sent!"
     redirect_to conversation_path(@conversation)
-   else
-      flash[:success] = "You May Not Send Empty Messages"
-    redirect_to conversation_path(@conversation)
-   end
-    
   end
  
  
