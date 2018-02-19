@@ -30,7 +30,7 @@ class ProjectsController < ApplicationController
       @project = Project.find(params[:id])
     else
         flash[:success] = "You may not change these details after deposit been paid"
-        redirect_to  project_project_milestones_path(@project.id)
+        redirect_to  project_project_milestones_path(deposit_paid_checker.project_id)
     end
     
   end
