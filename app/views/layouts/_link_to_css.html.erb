@@ -72,7 +72,23 @@
 	<!--</script>-->
 	    <!-- The font awesome cdn link-->
 	    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-	
+	    
+	    <!--Google analytics-->
+	    
+	    <% if Rails.env == "production"  %>
+<script type="text/javascript">
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-44991916-7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-44991916-7');
+</script>
+
+<% end %>
 
 
 </head>
