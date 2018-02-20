@@ -15,11 +15,17 @@ class PersonalMessagesController < ApplicationController
     
     @personal_message = current_user.personal_messages.build(personal_message_params)
     @personal_message.conversation_id = @conversation.id
+    
+    if @personal_message.valid?
      
-     @personal_message.save!
+      @personal_message.save!
   
-    flash[:success] = "Your message was sent!"
-    redirect_to conversation_path(@conversation)
+      flash[:success] = "Your message was sent!"
+      redirect_to conversation_path(@conversation)
+    else
+      flash[:danger] = "There was an error please send your message again"
+      redirect_to conversation_path(@conversation)
+    end
   end
  
  
