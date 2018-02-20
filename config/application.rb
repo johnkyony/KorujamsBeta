@@ -19,7 +19,7 @@ module Korujams
     # the layout for devise
     config.to_prepare do
       Devise::SessionsController.layout "paper_kit"
-      Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "paper_kit" : "paper_ui_kit" }
+      Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "paper_kit" : "paper_kit" }
       Devise::ConfirmationsController.layout "paper_kit"
       Devise::UnlocksController.layout "devise"            
       Devise::PasswordsController.layout "devise"        
