@@ -1,4 +1,5 @@
 class ProjectMilestonesController < ApplicationController
+  layout "paper_kit"
    before_action :set_project 
   
   def index

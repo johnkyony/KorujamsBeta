@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  layout "paper_kit"
   before_action :set_github
   
 

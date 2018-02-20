@@ -1,4 +1,5 @@
 class ConversationsController < ApplicationController
+ layout "paper_kit"
 
   before_action :authenticate_user!
   before_action :set_conversation , except: [:index]

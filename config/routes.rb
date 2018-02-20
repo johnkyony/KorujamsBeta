@@ -60,5 +60,5 @@ end
   # resources :projects do 
   #   resources :payments
   # end
-  root to: 'projects#index'
+  root to: 'landing_pages#index'
 end

@@ -1,4 +1,5 @@
 class PersonalMessagesController < ApplicationController
+  layout "paper_kit"
  before_action :find_conversation!
  
  def new

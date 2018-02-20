@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  layout "paper_kit"
   before_action :authenticate_user!
   after_action :verify_authorized
 

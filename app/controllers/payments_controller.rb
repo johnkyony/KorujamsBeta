@@ -1,4 +1,5 @@
 class PaymentsController < ApplicationController
+  layout "paper_kit"
   before_action :set_project
   
   skip_before_action :verify_authenticity_token

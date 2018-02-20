@@ -1,4 +1,5 @@
 class AccountDetailsController < ApplicationController
+ layout "paper_kit"
   before_action :set_project
   def index
    @feature_payment_history = FeaturePayment.where(project_id: @project.id)

@@ -1,4 +1,5 @@
 class PayDepositsController < ApplicationController
+  layout "paper_kit"
   before_action :set_project
   before_action :set_deposit
   before_action :set_feature_paid_for
