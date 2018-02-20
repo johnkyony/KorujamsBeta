@@ -9,9 +9,15 @@
 
     	<div class="sidebar-wrapper">
             <div class="logo">
+                <% if user_signed_in? %>
                 <a href="/projects" class="simple-text">
                     Korujams
                 </a>
+                <% else %>
+                <a href="/" class="simple-text">
+                    Korujams
+                </a>
+                <% end %>
             </div>  
               <% if user_signed_in? %>
             <ul class="nav">
