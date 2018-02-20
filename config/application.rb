@@ -15,6 +15,15 @@ module Korujams
     g.assets false
     g.view_specs false
   end
+  
+    # the layout for devise
+    config.to_prepare do
+      Devise::SessionsController.layout "paper_kit"
+      Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "paper_kit" : "paper_ui_kit" }
+      Devise::ConfirmationsController.layout "paper_kit"
+      Devise::UnlocksController.layout "devise"            
+      Devise::PasswordsController.layout "devise"        
+    end
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
