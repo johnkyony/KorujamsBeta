@@ -15,10 +15,13 @@ class ProjectsController < ApplicationController
   def create 
     @project = Project.new(project_params)
     @project.user_id = current_user.id
+    
     if @project.save
+      flash[:notice] = "Your Project has been created \t" + @project.repo_name
       redirect_to new_project_project_milestone_path(@project.id)
     else
-      render 'new'
+      flash[:success] = "Something went wrong , please try to answer all the questions. Even if its a rough idea or answer"
+      redirect_to new_project_path
     end
     
     
