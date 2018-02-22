@@ -26,10 +26,6 @@ class ProjectMilestonesController < ApplicationController
       redirect_to project_project_milestones_path(@project.id)
       flash[:notice] = "Minimal viable version only allow five features"
     end
-  
-    
-    
-   
     
   end
   
@@ -82,20 +78,24 @@ class ProjectMilestonesController < ApplicationController
     
   end
   
-   def update
-    @project_milestone = ProjectMilestone.find(params[:id])
-    if @project_milestone.update_attributes(project_milestone_params)
-      # Handle a successful update.
-      redirect_to    project_project_milestone_path(@project_milestone.project_id , @project_milestone.id)
-    else
-      render 'edit'
+    def update
+      @project_milestone = ProjectMilestone.find(params[:id])
+     @project_milestone.user_id = current_user.id
       
+      if @project_milestone.update_attributes(project_milestone_params)
+        # Handle a successful update.
+        redirect_to    project_project_milestone_path(@project_milestone.project_id , @project_milestone.id)
+      else
+        flash[:notice] = "Something went wrong please fix this error #{@project_milestone.errors.full_messages} then try again "
+        render 'edit'
+        
+      end
     end
-  end
   private 
   
+  
   def project_milestone_params
-    params.require(:project_milestone).permit(:project_id , :title , :description)
+    params.require(:project_milestone).permit(:project_id , :title , :description )
     
   end
   

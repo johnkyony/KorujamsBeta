@@ -23,7 +23,7 @@ class PersonalMessagesController < ApplicationController
       flash[:success] = "Your message was sent!"
       redirect_to conversation_path(@conversation)
     else
-      flash[:danger] = "There was an error please send your message again"
+      flash[:danger] = "There was an error please fix #{@personal_message.errors.full_messages} send your message again"
       redirect_to conversation_path(@conversation)
     end
   end

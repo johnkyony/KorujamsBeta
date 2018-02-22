@@ -46,6 +46,7 @@ class ProjectsController < ApplicationController
       flash[:notice] = "Changes have been saved"
       redirect_to  project_project_milestones_path(@project.id)
     else
+      flash[:success] = "Something went wrong please try again "
       render 'edit'
       
     end
