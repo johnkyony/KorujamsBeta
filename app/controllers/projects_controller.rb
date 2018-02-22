@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   layout "paper_kit"
   before_action :set_github
+  before_action :authenticate_user!
   
 
   before_action :authenticate_user!

@@ -1,5 +1,6 @@
 class PayFeaturesController < ApplicationController
   layout "paper_kit"
+  before_action :authenticate_user!
   before_action :set_project
   before_action :set_feature_paying_for
   before_action :set_feature_price
